@@ -1,4 +1,4 @@
-## Protocolo para los laboratorios de Sistemas Digitales
+## Protocolo para los laboratorios de "Sistemas Digitales"
 
 #### Json a enviar 
 	
@@ -32,7 +32,8 @@ Es un string con un tamaño maximo de 100 caracteres.
 
 - Ambos Laboratorios
   - Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]
-  - Llaves:  [Llave1, Llave2, Llave3, Llave4]
+  - Indicadores:  [indicador1, indicador2, indicador3, indicador4] 
+	- Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
 
 **Esquematico general**
 ### Diagrama:
