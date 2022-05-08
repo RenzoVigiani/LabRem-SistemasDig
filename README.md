@@ -1,10 +1,8 @@
 # Protocolo para los laboratorios de "Sistemas Digitales"
 
-
 ## Json a enviar
 
-
- 	{"Estado": [ 0, true, false], "Pulsadores": [false,false,false,false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial"}
+    {"Estado": [ 0, true, false], "Pulsadores": [false,false,false,false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial"}
 
 ## Sintaxis
 
@@ -12,11 +10,11 @@
 Es un array conformado por 3 elementos en el siguiente orden: [Laboratorio, SubLab, Inicio del experimento]
 
 |Laboratorio  | Sub Laboratorio  | Inicio del experimento | Laboratorio Seleccionado | Estado del experimento|
-|-|-----|-----|-------------------------|--------|
-|0|true |true |Sistemas Digitales: UART |Inicia  |
-|0|true |false|Sistemas Digitales: UART |Finaliza|
-|0|false|true |Sistemas Digitales: I2C  |Inicia  |
-|0|false|false|Sistemas Digitales: I2C  |Finaliza|
+|-|-----|-----|------------------|--------|
+|0|true |true |Comunicación UART |Inicia  |
+|0|true |false|Comunicación UART |Finaliza|
+|0|false|true |Comunicación I2C  |Inicia  |
+|0|false|false|Comunicación I2C  |Finaliza|
 
 **Elementos por Laboratorio**
 Ambos Laboratorios
@@ -28,7 +26,7 @@ Ambos Laboratorios
 **Serial**
 Es un dato del tipo "string" con un tamaño maximo de 100 caracteres.
 
-### Diagramas
+## Diagramas
 
 **Esquematico general**
 <img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/Esquematico.png" width="1920">
