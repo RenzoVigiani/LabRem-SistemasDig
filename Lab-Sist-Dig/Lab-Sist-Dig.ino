@@ -32,15 +32,15 @@ void post_json(char instrucciones[const_instruc], EthernetClient client);
 //#define rxPin 3
 //#define txPin 4
 // -------------- Pulsadores -------------//
-#define Pul_0  5
-#define Pul_1  6
-#define Pul_2  7
-#define Pul_3  8
+#define Pul_0  4
+#define Pul_1  5
+#define Pul_2  6
+#define Pul_3  7
 // -------------- Indicadores --------------//
-#define ind_0  3
-#define ind_1  4
-//#define ind_2  
-//#define ind_3  10
+#define ind_0  8
+#define ind_1  9
+#define ind_2  10
+#define ind_3  11
 
 void setup() 
 {
@@ -48,6 +48,8 @@ void setup()
 // Initialize serial port
   Serial.begin(9600);
   while (!Serial) continue;
+  Serial1.begin(9600);
+  while (!Serial1) continue;
 ///////////////////////////////////////////////////
 // INICIALIZO MAC E IP
   uint8_t mac[6] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
@@ -73,8 +75,8 @@ void setup()
 // -------- Indicadores -----//
   pinMode(ind_0, INPUT);
   pinMode(ind_1, INPUT);
-//  pinMode(ind_2, INPUT);
-//  pinMode(ind_3, INPUT);
+  pinMode(ind_2, INPUT);
+  pinMode(ind_3, INPUT);
 }
 
 void loop()
@@ -97,7 +99,6 @@ void loop()
     Serial.println(status);
   //obtengo las instrucciones del formato json
     strncpy(instrucciones,&status[15],(sizeof(status)-15));
-
   //------ GET ----- //
     if (strstr(status, "GET / HTTP/1.1") != NULL) 
     {
@@ -212,13 +213,12 @@ void Comunicacion(bool pulsador_0, bool pulsador_1, bool pulsador_2,bool pulsado
   Serial.println("Leo indicadores");
   indicador_0 = digitalRead(ind_0);
   indicador_1 = digitalRead(ind_1);
-//  indicador_2 = digitalRead(ind_2);
-//  indicador_3 = digitalRead(ind_3);
+  indicador_2 = digitalRead(ind_2);
+  indicador_3 = digitalRead(ind_3);
   Serial.println("Escribo y leo Serial");
-  Serial.write(Serial_rx);
-  client.println();
-  client.println(F("Envio Chau"));
-  client.println();
+  //client.println(Serial1.read());
+//  client.println(F("Envio Chau"));
+//  client.println();
   // Disconnect
-  client.stop();
+//  client.stop();
 }
