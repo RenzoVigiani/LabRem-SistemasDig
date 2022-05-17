@@ -63,7 +63,7 @@ set_location_assignment PIN_7 -to leds[1]
 set_location_assignment PIN_3 -to leds[0]
 set_location_assignment PIN_98 -to tx
 set_location_assignment PIN_100 -to rx
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name VHDL_FILE rectificador.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveform.vwf
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

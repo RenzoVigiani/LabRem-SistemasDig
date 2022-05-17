@@ -216,10 +216,13 @@ void Comunicacion(bool pulsador_0, bool pulsador_1, bool pulsador_2,bool pulsado
   indicador_2 = digitalRead(ind_2);
   indicador_3 = digitalRead(ind_3);
   Serial.println("Escribo y leo Serial");
+  Serial.write(Serial1.read());
+  Serial.println(Serial1.read());
+/*
   Serial.println(Serial1.read());
   client.println(Serial1.read());
   client.println(F("Envio Chau"));
-  client.println();
+  client.println();*/
   // Disconnect
 //  client.stop();
 }

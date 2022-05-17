@@ -1,0 +1,194 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
+
+// DATE "05/16/2022 16:02:21"
+
+// 
+// Device: Altera EP4CE6E22C8 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module rectificador (
+	entrada,
+	salidas,
+	leds,
+	rx,
+	clk,
+	tx);
+input 	[1:0] entrada;
+output 	[1:0] salidas;
+output 	[1:0] leds;
+input 	rx;
+input 	clk;
+output 	tx;
+
+// Design Ports Information
+// salidas[0]	=>  Location: PIN_99,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
+// salidas[1]	=>  Location: PIN_87,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
+// leds[0]	=>  Location: PIN_3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
+// leds[1]	=>  Location: PIN_7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
+// rx	=>  Location: PIN_100,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// clk	=>  Location: PIN_91,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// tx	=>  Location: PIN_98,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
+// entrada[0]	=>  Location: PIN_86,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// entrada[1]	=>  Location: PIN_85,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \rx~input_o ;
+wire \clk~input_o ;
+wire \salidas[0]~output_o ;
+wire \salidas[1]~output_o ;
+wire \leds[0]~output_o ;
+wire \leds[1]~output_o ;
+wire \tx~output_o ;
+wire \entrada[0]~input_o ;
+wire \entrada[1]~input_o ;
+
+
+// Location: IOOBUF_X34_Y17_N16
+cycloneive_io_obuf \salidas[0]~output (
+	.i(gnd),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\salidas[0]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \salidas[0]~output .bus_hold = "false";
+defparam \salidas[0]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X34_Y10_N9
+cycloneive_io_obuf \salidas[1]~output (
+	.i(gnd),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\salidas[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \salidas[1]~output .bus_hold = "false";
+defparam \salidas[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y23_N16
+cycloneive_io_obuf \leds[0]~output (
+	.i(\entrada[0]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\leds[0]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \leds[0]~output .bus_hold = "false";
+defparam \leds[0]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y21_N9
+cycloneive_io_obuf \leds[1]~output (
+	.i(\entrada[1]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\leds[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \leds[1]~output .bus_hold = "false";
+defparam \leds[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X34_Y17_N23
+cycloneive_io_obuf \tx~output (
+	.i(gnd),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\tx~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \tx~output .bus_hold = "false";
+defparam \tx~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X34_Y9_N1
+cycloneive_io_ibuf \entrada[0]~input (
+	.i(entrada[0]),
+	.ibar(gnd),
+	.o(\entrada[0]~input_o ));
+// synopsys translate_off
+defparam \entrada[0]~input .bus_hold = "false";
+defparam \entrada[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X34_Y9_N8
+cycloneive_io_ibuf \entrada[1]~input (
+	.i(entrada[1]),
+	.ibar(gnd),
+	.o(\entrada[1]~input_o ));
+// synopsys translate_off
+defparam \entrada[1]~input .bus_hold = "false";
+defparam \entrada[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X34_Y17_N1
+cycloneive_io_ibuf \rx~input (
+	.i(rx),
+	.ibar(gnd),
+	.o(\rx~input_o ));
+// synopsys translate_off
+defparam \rx~input .bus_hold = "false";
+defparam \rx~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X34_Y12_N1
+cycloneive_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+assign salidas[0] = \salidas[0]~output_o ;
+
+assign salidas[1] = \salidas[1]~output_o ;
+
+assign leds[0] = \leds[0]~output_o ;
+
+assign leds[1] = \leds[1]~output_o ;
+
+assign tx = \tx~output_o ;
+
+endmodule
