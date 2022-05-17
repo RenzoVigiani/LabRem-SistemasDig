@@ -1,0 +1,137 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk_50Mhz'
+Slack : -4.881
+TNS   : -88.529
+
+Type  : Slow 1200mV 85C Model Setup 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : -4.434
+TNS   : -173.850
+
+Type  : Slow 1200mV 85C Model Setup 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : -0.160
+TNS   : -0.317
+
+Type  : Slow 1200mV 85C Model Hold 'clk_50Mhz'
+Slack : 0.170
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : 0.453
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 0.487
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : -0.748
+TNS   : -8.228
+
+Type  : Slow 1200mV 85C Model Removal 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 1.086
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_50Mhz'
+Slack : -3.000
+TNS   : -46.123
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : -1.487
+TNS   : -66.915
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : -1.487
+TNS   : -16.357
+
+Type  : Slow 1200mV 0C Model Setup 'clk_50Mhz'
+Slack : -4.406
+TNS   : -78.110
+
+Type  : Slow 1200mV 0C Model Setup 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : -4.133
+TNS   : -161.292
+
+Type  : Slow 1200mV 0C Model Setup 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : -0.050
+TNS   : -0.096
+
+Type  : Slow 1200mV 0C Model Hold 'clk_50Mhz'
+Slack : 0.201
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 0.450
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : -0.563
+TNS   : -6.193
+
+Type  : Slow 1200mV 0C Model Removal 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 0.981
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_50Mhz'
+Slack : -3.000
+TNS   : -46.123
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : -1.487
+TNS   : -66.915
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : -1.487
+TNS   : -16.357
+
+Type  : Fast 1200mV 0C Model Setup 'clk_50Mhz'
+Slack : -1.505
+TNS   : -21.958
+
+Type  : Fast 1200mV 0C Model Setup 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : -1.367
+TNS   : -49.928
+
+Type  : Fast 1200mV 0C Model Setup 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 0.495
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk_50Mhz'
+Slack : -0.039
+TNS   : -0.039
+
+Type  : Fast 1200mV 0C Model Hold 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 0.208
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : 0.455
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_50Mhz'
+Slack : -3.000
+TNS   : -33.970
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'logica:ut_logica|contador:ut_clk_tx|clk_out'
+Slack : -1.000
+TNS   : -45.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'UART:ut_uart|contador:ut_clk_tx|clk_out'
+Slack : -1.000
+TNS   : -11.000
+
+------------------------------------------------------------

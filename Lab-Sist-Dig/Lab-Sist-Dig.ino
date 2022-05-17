@@ -48,8 +48,8 @@ void setup()
 // Initialize serial port
   Serial.begin(9600);
   while (!Serial) continue;
-  Serial1.begin(9600);
-  while (!Serial1) continue;
+  Serial3.begin(9600);
+  while (!Serial3) continue;
 ///////////////////////////////////////////////////
 // INICIALIZO MAC E IP
   uint8_t mac[6] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
@@ -84,6 +84,7 @@ void loop()
 //////////// Strings de comunicación /////////////
   char status[const_status] = {0};
   char instrucciones[const_instruc] = {0};
+
 
   // Wait for an incomming connection
   EthernetClient client = server.available(); 
@@ -205,6 +206,7 @@ void post_json(char instrucciones[const_instruc], EthernetClient client)
 
 void Comunicacion(bool pulsador_0, bool pulsador_1, bool pulsador_2,bool pulsador_3,EthernetClient client)
 {
+  char recibo[20] = {0};
   Serial.println("Escribo pulsadores");
   digitalWrite(Pul_0,pulsador_0);
   digitalWrite(Pul_1,pulsador_1);
@@ -216,11 +218,13 @@ void Comunicacion(bool pulsador_0, bool pulsador_1, bool pulsador_2,bool pulsado
   indicador_2 = digitalRead(ind_2);
   indicador_3 = digitalRead(ind_3);
   Serial.println("Escribo y leo Serial");
-  Serial.write(Serial1.read());
-  Serial.println(Serial1.read());
+//  Serial.write(Serial3.read());
+  Serial3.readBytesUntil('\r', recibo, sizeof(recibo));
+//  Serial.println(recibo);
+
 /*
-  Serial.println(Serial1.read());
-  client.println(Serial1.read());
+  Serial.println(Serial3.read());
+  client.println(Serial3.read());
   client.println(F("Envio Chau"));
   client.println();*/
   // Disconnect

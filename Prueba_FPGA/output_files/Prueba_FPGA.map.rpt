@@ -1,0 +1,495 @@
+Analysis & Synthesis report for Prueba_FPGA
+Tue May 17 16:23:11 2022
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |TP_integrador|logica:ut_logica|estado
+  9. State Machine - |TP_integrador|UART:ut_uart|rx_uart:ut_rx_uart|estado
+ 10. State Machine - |TP_integrador|UART:ut_uart|tx_uart:ut_tx_uart|estado
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: UART:ut_uart|contador:ut_clk_tx
+ 17. Parameter Settings for User Entity Instance: UART:ut_uart|contador:ut_clk_rx
+ 18. Parameter Settings for User Entity Instance: logica:ut_logica|contador:ut_clk_tx
+ 19. Port Connectivity Checks: "logica:ut_logica|contador:ut_clk_tx"
+ 20. Port Connectivity Checks: "UART:ut_uart|rx_uart:ut_rx_uart"
+ 21. Port Connectivity Checks: "UART:ut_uart|contador:ut_clk_rx"
+ 22. Port Connectivity Checks: "UART:ut_uart|contador:ut_clk_tx"
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue May 17 16:23:11 2022           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; Prueba_FPGA                                     ;
+; Top-level Entity Name              ; TP_integrador                                   ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 173                                             ;
+;     Total combinational functions  ; 162                                             ;
+;     Dedicated logic registers      ; 85                                              ;
+; Total registers                    ; 85                                              ;
+; Total pins                         ; 10                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE6E22C8        ;                    ;
+; Top-level entity name                                                      ; TP_Integrador      ; Prueba_FPGA        ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                        ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                                 ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Contador_con_q/contador.vhd      ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/Contador_con_q/contador.vhd ;         ;
+; UART/UART.vhd                    ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/UART/UART.vhd               ;         ;
+; UART/TX_UART.vhd                 ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/UART/TX_UART.vhd            ;         ;
+; UART/RX_UART.vhd                 ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/UART/RX_UART.vhd            ;         ;
+; TP_Integrador.vhd                ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/TP_Integrador.vhd           ;         ;
+; paquete_uart.vhd                 ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/paquete_uart.vhd            ;         ;
+; mi_paquete.vhd                   ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/mi_paquete.vhd              ;         ;
+; logica.vhd                       ; yes             ; User VHDL File  ; C:/Users/rvigiani/OneDrive - Noanet S.A/Experimentos Arduino/Laboratorios Remotos/LabRem-SistemasDig/Prueba_FPGA/logica.vhd                  ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                               ;
++---------------------------------------------+---------------------------------------------+
+; Resource                                    ; Usage                                       ;
++---------------------------------------------+---------------------------------------------+
+; Estimated Total logic elements              ; 173                                         ;
+;                                             ;                                             ;
+; Total combinational functions               ; 162                                         ;
+; Logic element usage by number of LUT inputs ;                                             ;
+;     -- 4 input functions                    ; 49                                          ;
+;     -- 3 input functions                    ; 8                                           ;
+;     -- <=2 input functions                  ; 105                                         ;
+;                                             ;                                             ;
+; Logic elements by mode                      ;                                             ;
+;     -- normal mode                          ; 104                                         ;
+;     -- arithmetic mode                      ; 58                                          ;
+;                                             ;                                             ;
+; Total registers                             ; 85                                          ;
+;     -- Dedicated logic registers            ; 85                                          ;
+;     -- I/O registers                        ; 0                                           ;
+;                                             ;                                             ;
+; I/O pins                                    ; 10                                          ;
+; Embedded Multiplier 9-bit elements          ; 0                                           ;
+; Maximum fan-out node                        ; logica:ut_logica|contador:ut_clk_tx|clk_out ;
+; Maximum fan-out                             ; 46                                          ;
+; Total fan-out                               ; 696                                         ;
+; Average fan-out                             ; 2.61                                        ;
++---------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                        ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------+
+; |TP_integrador             ; 162 (0)           ; 85 (0)       ; 0           ; 0            ; 0       ; 0         ; 10   ; 0            ; |TP_integrador                                     ; work         ;
+;    |UART:ut_uart|          ; 35 (0)            ; 25 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP_integrador|UART:ut_uart                        ; work         ;
+;       |contador:ut_clk_tx| ; 28 (28)           ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP_integrador|UART:ut_uart|contador:ut_clk_tx     ; work         ;
+;       |tx_uart:ut_tx_uart| ; 7 (7)             ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP_integrador|UART:ut_uart|tx_uart:ut_tx_uart     ; work         ;
+;    |logica:ut_logica|      ; 127 (89)          ; 60 (45)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP_integrador|logica:ut_logica                    ; work         ;
+;       |contador:ut_clk_tx| ; 38 (38)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TP_integrador|logica:ut_logica|contador:ut_clk_tx ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------+
+; State Machine - |TP_integrador|logica:ut_logica|estado    ;
++-----------+-----------+-----------+-----------+-----------+
+; Name      ; estado.s3 ; estado.s2 ; estado.s1 ; estado.s0 ;
++-----------+-----------+-----------+-----------+-----------+
+; estado.s0 ; 0         ; 0         ; 0         ; 0         ;
+; estado.s1 ; 0         ; 0         ; 1         ; 1         ;
+; estado.s2 ; 0         ; 1         ; 0         ; 1         ;
+; estado.s3 ; 1         ; 0         ; 0         ; 1         ;
++-----------+-----------+-----------+-----------+-----------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------+
+; State Machine - |TP_integrador|UART:ut_uart|rx_uart:ut_rx_uart|estado                ;
++--------------+--------------+-------------+-------------+--------------+-------------+
+; Name         ; estado.stop2 ; estado.stop ; estado.data ; estado.start ; estado.idle ;
++--------------+--------------+-------------+-------------+--------------+-------------+
+; estado.idle  ; 0            ; 0           ; 0           ; 0            ; 0           ;
+; estado.start ; 0            ; 0           ; 0           ; 1            ; 1           ;
+; estado.data  ; 0            ; 0           ; 1           ; 0            ; 1           ;
+; estado.stop  ; 0            ; 1           ; 0           ; 0            ; 1           ;
+; estado.stop2 ; 1            ; 0           ; 0           ; 0            ; 1           ;
++--------------+--------------+-------------+-------------+--------------+-------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |TP_integrador|UART:ut_uart|tx_uart:ut_tx_uart|estado                                                                                   ;
++--------------+-------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+-------------+
+; Name         ; estado.stop ; estado.d7 ; estado.d6 ; estado.d5 ; estado.d4 ; estado.d3 ; estado.d2 ; estado.d1 ; estado.d0 ; estado.start ; estado.idle ;
++--------------+-------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+-------------+
+; estado.idle  ; 0           ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0            ; 0           ;
+; estado.start ; 0           ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ; 1           ;
+; estado.d0    ; 0           ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0            ; 1           ;
+; estado.d1    ; 0           ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0            ; 1           ;
+; estado.d2    ; 0           ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0            ; 1           ;
+; estado.d3    ; 0           ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0            ; 1           ;
+; estado.d4    ; 0           ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0            ; 1           ;
+; estado.d5    ; 0           ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0            ; 1           ;
+; estado.d6    ; 0           ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0            ; 1           ;
+; estado.d7    ; 0           ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0            ; 1           ;
+; estado.stop  ; 1           ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0            ; 1           ;
++--------------+-------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                ;
++----------------------------------------------+----------------------------------------------------+
+; Register name                                ; Reason for Removal                                 ;
++----------------------------------------------+----------------------------------------------------+
+; logica:ut_logica|data_tx[7]                  ; Stuck at GND due to stuck port data_in             ;
+; logica:ut_logica|send_tx                     ; Merged with logica:ut_logica|enable_tx             ;
+; UART:ut_uart|rx_uart:ut_rx_uart|cnt[0..3]    ; Lost fanout                                        ;
+; UART:ut_uart|rx_uart:ut_rx_uart|n[0..2]      ; Lost fanout                                        ;
+; UART:ut_uart|contador:ut_clk_rx|clk_out      ; Lost fanout                                        ;
+; UART:ut_uart|contador:ut_clk_rx|cnt[0..8]    ; Lost fanout                                        ;
+; UART:ut_uart|rx_uart:ut_rx_uart|estado.idle  ; Lost fanout                                        ;
+; UART:ut_uart|rx_uart:ut_rx_uart|estado.start ; Lost fanout                                        ;
+; UART:ut_uart|rx_uart:ut_rx_uart|estado.data  ; Lost fanout                                        ;
+; UART:ut_uart|rx_uart:ut_rx_uart|estado.stop  ; Lost fanout                                        ;
+; UART:ut_uart|rx_uart:ut_rx_uart|estado.stop2 ; Lost fanout                                        ;
+; logica:ut_logica|contador:ut_clk_tx|cnt[0]   ; Merged with UART:ut_uart|contador:ut_clk_tx|cnt[0] ;
+; logica:ut_logica|contador:ut_clk_tx|cnt[1]   ; Merged with UART:ut_uart|contador:ut_clk_tx|cnt[1] ;
+; Total Number of Removed Registers = 26       ;                                                    ;
++----------------------------------------------+----------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                    ;
++----------------------------------------+--------------------+----------------------------------------------------------------------------------+
+; Register name                          ; Reason for Removal ; Registers Removed due to This Register                                           ;
++----------------------------------------+--------------------+----------------------------------------------------------------------------------+
+; UART:ut_uart|rx_uart:ut_rx_uart|cnt[3] ; Lost Fanouts       ; UART:ut_uart|rx_uart:ut_rx_uart|cnt[2], UART:ut_uart|rx_uart:ut_rx_uart|cnt[1],  ;
+;                                        ;                    ; UART:ut_uart|rx_uart:ut_rx_uart|cnt[0], UART:ut_uart|contador:ut_clk_rx|clk_out, ;
+;                                        ;                    ; UART:ut_uart|rx_uart:ut_rx_uart|estado.start,                                    ;
+;                                        ;                    ; UART:ut_uart|rx_uart:ut_rx_uart|estado.data,                                     ;
+;                                        ;                    ; UART:ut_uart|rx_uart:ut_rx_uart|estado.stop,                                     ;
+;                                        ;                    ; UART:ut_uart|rx_uart:ut_rx_uart|estado.stop2                                     ;
+; UART:ut_uart|rx_uart:ut_rx_uart|n[2]   ; Lost Fanouts       ; UART:ut_uart|rx_uart:ut_rx_uart|n[1], UART:ut_uart|rx_uart:ut_rx_uart|n[0]       ;
++----------------------------------------+--------------------+----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 85    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 43    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 46    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; logica:ut_logica|cnt[0]                ; 5       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |TP_integrador|logica:ut_logica|contador:ut_clk_tx|cnt[15] ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |TP_integrador|UART:ut_uart|contador:ut_clk_rx|cnt[0]      ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |TP_integrador|UART:ut_uart|contador:ut_clk_tx|cnt[12]     ;
+; 4:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |TP_integrador|logica:ut_logica|cnt[7]                     ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |TP_integrador|UART:ut_uart|rx_uart:ut_rx_uart|n[2]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |TP_integrador|UART:ut_uart|rx_uart:ut_rx_uart|cnt[3]      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |TP_integrador|logica:ut_logica|estado                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: UART:ut_uart|contador:ut_clk_tx ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; cnt_max        ; 5200  ; Signed Integer                                      ;
+; nbits          ; 1     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: UART:ut_uart|contador:ut_clk_rx ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; cnt_max        ; 325   ; Signed Integer                                      ;
+; nbits          ; 1     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: logica:ut_logica|contador:ut_clk_tx ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; cnt_max        ; 57200 ; Signed Integer                                          ;
+; nbits          ; 1     ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "logica:ut_logica|contador:ut_clk_tx"                                                ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:ut_uart|rx_uart:ut_rx_uart"                                                       ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; rx_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:ut_uart|contador:ut_clk_rx"                                                    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:ut_uart|contador:ut_clk_tx"                                                    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Tue May 17 16:23:06 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Prueba_FPGA -c Prueba_FPGA
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file string_tx_uart.vhd
+    Info (12022): Found design unit 1: string_tx_uart-a_string_tx_uart
+    Info (12023): Found entity 1: string_tx_uart
+Info (12021): Found 2 design units, including 1 entities, in source file contador_con_q/contador.vhd
+    Info (12022): Found design unit 1: contador-a_contador
+    Info (12023): Found entity 1: contador
+Info (12021): Found 2 design units, including 1 entities, in source file uart/uart.vhd
+    Info (12022): Found design unit 1: UART-a_UART
+    Info (12023): Found entity 1: UART
+Info (12021): Found 2 design units, including 1 entities, in source file uart/tx_uart.vhd
+    Info (12022): Found design unit 1: tx_uart-a_tx_uart
+    Info (12023): Found entity 1: tx_uart
+Info (12021): Found 2 design units, including 1 entities, in source file uart/rx_uart.vhd
+    Info (12022): Found design unit 1: rx_uart-a_rx_uart
+    Info (12023): Found entity 1: rx_uart
+Info (12021): Found 2 design units, including 1 entities, in source file tp_integrador.vhd
+    Info (12022): Found design unit 1: TP_integrador-a_TP_integrador
+    Info (12023): Found entity 1: TP_integrador
+Info (12021): Found 1 design units, including 0 entities, in source file paquete_uart.vhd
+    Info (12022): Found design unit 1: paquete_uart
+Info (12021): Found 1 design units, including 0 entities, in source file mi_paquete.vhd
+    Info (12022): Found design unit 1: mi_paquete
+Info (12021): Found 2 design units, including 1 entities, in source file logica.vhd
+    Info (12022): Found design unit 1: logica-a_logica
+    Info (12023): Found entity 1: logica
+Info (12127): Elaborating entity "TP_Integrador" for the top level hierarchy
+Info (12128): Elaborating entity "UART" for hierarchy "UART:ut_uart"
+Warning (10036): Verilog HDL or VHDL warning at UART.vhd(23): object "rx_done" assigned a value but never read
+Info (12128): Elaborating entity "contador" for hierarchy "UART:ut_uart|contador:ut_clk_tx"
+Info (12128): Elaborating entity "contador" for hierarchy "UART:ut_uart|contador:ut_clk_rx"
+Info (12128): Elaborating entity "tx_uart" for hierarchy "UART:ut_uart|tx_uart:ut_tx_uart"
+Info (12128): Elaborating entity "rx_uart" for hierarchy "UART:ut_uart|rx_uart:ut_rx_uart"
+Info (12128): Elaborating entity "logica" for hierarchy "logica:ut_logica"
+Info (12128): Elaborating entity "contador" for hierarchy "logica:ut_logica|contador:ut_clk_tx"
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 22 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "rx"
+Info (21057): Implemented 198 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 5 output pins
+    Info (21061): Implemented 188 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4632 megabytes
+    Info: Processing ended: Tue May 17 16:23:11 2022
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:04
+
+

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue May 17 16:23:11 2022
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : Prueba_FPGA
+Top-level Entity Name : TP_integrador
+Family : Cyclone IV E
+Total logic elements : 173
+    Total combinational functions : 162
+    Dedicated logic registers : 85
+Total registers : 85
+Total pins : 10
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

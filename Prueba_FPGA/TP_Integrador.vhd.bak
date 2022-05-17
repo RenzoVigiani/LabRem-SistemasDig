@@ -1,0 +1,75 @@
+-- Vigiani Renzo Lautaro
+-- TP INTEGRADOR
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+USE WORK.mi_paquete.ALL;
+USE work.paquete_uart.all;
+entity TP_integrador is 	
+	port	
+		(
+			clk_50Mhz  :	in std_logic; --50mhz
+			reset      :	in std_logic;
+			pul_1		  :	in std_logic;
+			pul_2		  :	in std_logic;
+			pul_3		  :	in std_logic;
+			rx			  :	in std_logic; -- uart --- modulo wifi
+			leds		  :	out std_logic_vector(7 downto 0);
+			tx			  :	out std_logic -- uart --- modulo wifi			
+		);
+end entity;
+--AT+CWJAP_DEF="WiFi_Fibertel_f85_2.4GHz","s4r44abg2d"
+architecture a_TP_integrador of TP_integrador is
+-- Declaracion componentes
+component logica is
+	generic (
+					constant cant_char_1: integer range 0 to 100:=11;
+					constant cant_char_2: integer range 0 to 100:=30;
+					constant cant_char_3: integer range 0 to 100:=11;
+					constant cant_char_4: integer range 0 to 100:=43;
+					constant cant_char_5: integer range 0 to 100:=14;
+					constant cant_char_6: integer range 0 to 100:=44
+				);
+	port	
+	(
+		clk_50Mhz  : 	in std_logic; --50mhz
+		reset      : 	in std_logic;
+		pul_1		  :	in std_logic:='0';
+		pul_2		  :	in std_logic:='0';
+		pul_3		  :	in std_logic:='0';
+		data_rx	  :	in std_logic_vector(7 downto 0);
+		done_char_tx		:	in std_logic;
+		enable_tx  	: 	out std_logic:='0';
+		send_tx	  	: 	out std_logic:='0';
+		leds		  	: 	out std_logic_vector(7 downto 0):=x"00";-- leds
+		data_tx   	: 	out std_logic_vector(7 downto 0):=x"00"-- que se envía
+	);
+end component;
+-- UARt
+component UART is
+  port(
+		clk_50MHz	:	in std_logic;
+		reset			:	in std_logic;
+		enable_tx	:	in std_logic;
+		send_tx		:	in std_logic;
+		rx_uart_ent	:	in std_logic;
+		dato_tx		:	in std_logic_vector(7 downto 0);
+		tx_uart_sal	:	out std_logic;
+		dato_rx		:	out std_logic_vector(7 downto 0);
+		done_char_tx:	out std_logic
+		);
+end component;
+-- Declaración señales
+signal dato_rx,dato_tx: STD_LOGIC_VECTOR (7 DOWNTO 0);
+signal clk_tx: std_logic:='0';
+signal rx_done,clk_rx,tx_rx,done_char,done_string: std_logic;
+-- señales de la logica
+signal enable,done,send:std_logic;
+Begin
+-- instancio tx y rx
+	ut_uart	:	uart  port map(clk_50MHz,reset,enable,send,rx,dato_tx,tx,dato_rx,done_char);
+	ut_logica: logica generic map(11,52,11,43,14,44) 
+							port map (clk_50MHz,reset,pul_1,pul_2,pul_3,dato_rx,
+												  done_char,enable,send,leds,dato_tx);
+end architecture;

@@ -1,0 +1,29 @@
+
+State Machine - |TP_integrador|logica:ut_logica|estado
+Name estado.s3 estado.s2 estado.s1 estado.s0 
+estado.s0 0 0 0 0 
+estado.s1 0 0 1 1 
+estado.s2 0 1 0 1 
+estado.s3 1 0 0 1 
+
+State Machine - |TP_integrador|UART:ut_uart|rx_uart:ut_rx_uart|estado
+Name estado.stop2 estado.stop estado.data estado.start estado.idle 
+estado.idle 0 0 0 0 0 
+estado.start 0 0 0 1 1 
+estado.data 0 0 1 0 1 
+estado.stop 0 1 0 0 1 
+estado.stop2 1 0 0 0 1 
+
+State Machine - |TP_integrador|UART:ut_uart|tx_uart:ut_tx_uart|estado
+Name estado.stop estado.d7 estado.d6 estado.d5 estado.d4 estado.d3 estado.d2 estado.d1 estado.d0 estado.start estado.idle 
+estado.idle 0 0 0 0 0 0 0 0 0 0 0 
+estado.start 0 0 0 0 0 0 0 0 0 1 1 
+estado.d0 0 0 0 0 0 0 0 0 1 0 1 
+estado.d1 0 0 0 0 0 0 0 1 0 0 1 
+estado.d2 0 0 0 0 0 0 1 0 0 0 1 
+estado.d3 0 0 0 0 0 1 0 0 0 0 1 
+estado.d4 0 0 0 0 1 0 0 0 0 0 1 
+estado.d5 0 0 0 1 0 0 0 0 0 0 1 
+estado.d6 0 0 1 0 0 0 0 0 0 0 1 
+estado.d7 0 1 0 0 0 0 0 0 0 0 1 
+estado.stop 1 0 0 0 0 0 0 0 0 0 1 
