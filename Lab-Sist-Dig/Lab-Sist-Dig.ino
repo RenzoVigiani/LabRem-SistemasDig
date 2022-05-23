@@ -1,8 +1,8 @@
 #include <ArduinoJson.h>
 #include <UIPEthernet.h>
 
-#define const_status 190
-#define const_instruc 170
+#define const_status 256
+#define const_instruc 236
 
 EthernetServer server = EthernetServer(22);
 //////// VAriables Locales de json //////////////
@@ -21,7 +21,7 @@ EthernetServer server = EthernetServer(22);
   bool indicador_2=false;
   bool indicador_3=false;
 // UART
-  char* Serial_rx;
+  char* Serial_rx={"Holis"};
 ////////////// Funciones  ////////////////////
 void Comunicacion(bool pulsador_0, bool pulsador_1, bool pulsador_2,bool pulsador_3,EthernetClient client);
 //-------------------//
@@ -121,12 +121,6 @@ void get_json(EthernetClient client)
       Estado.add(subLab);
       Estado.add(iniLab);
 
-      JsonArray Pulsadores = doc.createNestedArray("Pulsadores");
-      Pulsadores.add(pulsador_0);
-      Pulsadores.add(pulsador_1);
-      Pulsadores.add(pulsador_2);
-      Pulsadores.add(pulsador_3);
-
       JsonArray Indicadores = doc.createNestedArray("Indicadores");
       Indicadores.add(indicador_0);
       Indicadores.add(indicador_1);
@@ -134,7 +128,7 @@ void get_json(EthernetClient client)
       Indicadores.add(indicador_3);
 
       doc["Serial"] = Serial_rx;
-      
+
       Serial.print(F("Sending: "));
       serializeJson(doc, Serial);
       Serial.println();
@@ -144,11 +138,12 @@ void get_json(EthernetClient client)
 // client.println(F("Connection: close"));
       client.print(F("Content-Length: "));
       client.println(measureJsonPretty(doc));
-      client.println(); 
+      client.println();
 // Write JSON document
       serializeJsonPretty(doc, client);
 // Disconnect
-//      client.stop();
+  client.println(F("Get terminado"));
+  //      client.stop();
 }
 
 void post_json(char instrucciones[const_instruc], EthernetClient client)
@@ -202,6 +197,9 @@ void post_json(char instrucciones[const_instruc], EthernetClient client)
   {
     Serial.println("Laboratorio incorrecto");    
   }
+  Serial.println("Post finalizado");
+  client.println(F("Post terminado"));
+  //client.stop();
 }
 
 void Comunicacion(bool pulsador_0, bool pulsador_1, bool pulsador_2,bool pulsador_3,EthernetClient client)
@@ -219,7 +217,7 @@ void Comunicacion(bool pulsador_0, bool pulsador_1, bool pulsador_2,bool pulsado
   indicador_3 = digitalRead(ind_3);
   Serial.println("Escribo y leo Serial");
 //  Serial.write(Serial3.read());
-  Serial3.readBytesUntil('\r', recibo, sizeof(recibo));
+//  Serial3.readBytesUntil('\r', recibo, sizeof(recibo));
 //  Serial.println(recibo);
 
 /*

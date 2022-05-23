@@ -6,7 +6,7 @@
 
 ## Json a recibir
 
-    {"Estado": [ 0, true, false], "Pulsadores": [false,false,false,false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial"}
+    {"Estado": [ 0, true, false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial"}
 
 ## Sintaxis
 
