@@ -41,6 +41,12 @@ Pin Out
 
  <img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/Arduino-Mega-Pinout.png" width=1920>
 
+**Arduino Mega Pro**
+
+Pin Out
+
+ <img alt = "Arduino Mega Pro" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/Arduino-Mega-Pro.png" width=1920>
+
 **FPGA Cyclone II**
 Nombre: Altera_FPGA_Board_EP2C8Q208C8 Cyclone II
 
