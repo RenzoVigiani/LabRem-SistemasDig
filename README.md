@@ -33,26 +33,25 @@ Es un dato del tipo "string" con un tamaño maximo de 100 caracteres.
 ## Diagramas
 
 **Esquematico general**
-<img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/Esquematico.png" width="1920">
+<img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico.png" width="1920">
 
 **Arduino Mega**
 
 Pin Out
 
- <img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/Arduino-Mega-Pinout.png" width=1920>
+ <img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pinout.png" width=1920>
 
 **Arduino Mega Pro**
 
 Pin Out
-
- <img alt = "Arduino Mega Pro" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/Arduino-Mega-Pro.png" width=1920>
+<img alt = "Arduino Mega Pro" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pro.png">
 
 **FPGA Cyclone II**
 Nombre: Altera_FPGA_Board_EP2C8Q208C8 Cyclone II
 
-<img  alt="Cyclone II" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/cyclone_ii.png" width="1920">
+<img  alt="Cyclone II" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone_ii.png" width="1920">
 
 **FPGA Cyclone IV**
 Nombre: Altera_FPGA_Board_EP4CE6E22C8 Cyclone IV
 
-<img  alt="Cyclone IV" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/SistemasDigitales/Imagenes/cyclone-iv.png" width="1920"> 
+<img  alt="Cyclone IV" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone-iv.png" width="1920"> 
