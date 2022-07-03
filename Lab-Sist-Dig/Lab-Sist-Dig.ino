@@ -132,18 +132,6 @@ void get_json(EthernetClient client)
       Serial.print(F("Sending: "));
       serializeJson(doc, Serial);
       Serial.println();
-// Write response headers
-      client.println(F("HTTP/1.0 200 OK"));
-      client.println(F("Content-Type: application/json"));
-// client.println(F("Connection: close"));
-      client.print(F("Content-Length: "));
-      client.println(measureJsonPretty(doc));
-      client.println();
-// Write JSON document
-      serializeJsonPretty(doc, client);
-// Disconnect
-  client.println(F("Get terminado"));
-  //      client.stop();
 }
 
 void post_json(char instrucciones[const_instruc], EthernetClient client)
