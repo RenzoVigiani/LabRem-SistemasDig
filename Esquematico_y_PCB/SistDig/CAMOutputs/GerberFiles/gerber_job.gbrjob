@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2022-05-30T18:29:31Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.6.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "lab_sist_dig"
+        },
+        "Owner": "Maxi Lopez <maxiilopez97@gmail.com>",
+        "Size": {
+            "X": 97.46,
+            "Y": 86.35
+        }
+    }
+}
