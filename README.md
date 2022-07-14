@@ -64,7 +64,7 @@ Es una variable numerica que representa un mensaje de error.
 <img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico_gral.png" width="1920">
 
 **Esquematico**
-<img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico.png" width="1920">
+<img alt="Esquematico" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico.png" width="1920">
 
 **Arduino Mega 2560**
 
