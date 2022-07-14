@@ -67,7 +67,6 @@ Es una variable numerica que representa un mensaje de error.
 <img alt="Esquematico" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico.png" width="1920">
 
 **Arduino Mega 2560**
-
 Pin Out
 
  <img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pinout.png" width=1920>
