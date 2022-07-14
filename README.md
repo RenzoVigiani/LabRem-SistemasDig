@@ -10,7 +10,7 @@ POST /HTTP/1.1 + <JSON a enviar>
 ##### Json a enviar (ejemplo)
 
 ```Ruby 
-{"Estado": [ 0, true, false], "Pulsadores": [false,false,false,false], "Serial": "Mensaje serial"}
+{"Estado": [ 0, true, false],"Placa":0, "Pulsadores": [false,false,false,false], "Serial": "Mensaje serial"}
 ```
 Y para obtener avances de los datos o reporte de los datos debe enviar un:
 
@@ -23,7 +23,7 @@ De esta forma el Arduino responde ante una petición.
 ##### Json a recibir (ejemplo)
 
 ```Ruby 
-{"Estado": [ 0, true, false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial","Error":0}
+{"Estado": [ 0, true, false], "Placa":0,"Indicadores": [false,false,false,false], "Serial": "Mensaje serial","Error":0}
 ```
 
 ## Sintaxis
