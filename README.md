@@ -1,12 +1,30 @@
 # Protocolo para los laboratorios de "Sistemas Digitales"
 
-## Json a enviar
+El procedimiento de comunicación es el siguiente.
+Cada vez que se quiere modificar algun dato en el laboratorio. El Servidor debe enviar un
 
-    {"Estado": [ 0, true, false], "Pulsadores": [false,false,false,false], "Serial": "Mensaje serial"}
+```Ruby 
+POST /HTTP/1.1 + <JSON a enviar>
+```
 
-## Json a recibir
+##### Json a enviar (ejemplo)
 
-    {"Estado": [ 0, true, false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial"}
+```Ruby 
+{"Estado": [ 0, true, false], "Pulsadores": [false,false,false,false], "Serial": "Mensaje serial"}
+```
+Y para obtener avances de los datos o reporte de los datos debe enviar un:
+
+```Ruby 
+GET /HTTP/1.1
+```
+
+De esta forma el Arduino responde ante una petición.
+
+##### Json a recibir (ejemplo)
+
+```Ruby 
+{"Estado": [ 0, true, false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial","Error":0}
+```
 
 ## Sintaxis
 
@@ -30,12 +48,22 @@ Ambos Laboratorios
 **Serial**
 Es un dato del tipo "string" con un tamaño maximo de 100 caracteres.
 
+**Error**
+Es una variable numerica que representa un mensaje de error.
+
+| Tipo de error                         |  Valor  |
+| ----------------------------------    |---------|
+| Sin errores                           |    0    |
+| Error limites de angulo de azimut.    |    1    |
+| Error limites de angulo de elevación  |    2    |
+| Error de laboratorio incorrecto       |    3    |
+
 ## Diagramas
 
 **Esquematico general**
 <img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico.png" width="1920">
 
-**Arduino Mega**
+**Arduino Mega 2560**
 
 Pin Out
 
