@@ -1,0 +1,29 @@
+Para solicitar información.
+GET / HTTP/1.1
+
+Generico:
+{"Estado":[0,0,0],"Pulsadores":[0,1,0,1],"Indicadores":[1,0,1,0],"Analogico":[1,2,9,6],"Serial":"Mensaje generico"}
+
+
+Para escribir en laboratorio de Sist Digitales:
+
+Ejemplo de envio:
+POST /HTTP/1.1{"Estado": [ 0, 1, 1], "Pulsadores": [1,0,0,1], "Serial": "Mensaje serial"}
+POST / HTTP/1.1{"Estado": [ 0, true, true], "Pulsadores":  [true,false,true,false], "Serial": "Mensaje serial enviado"}
+
+Ejemplo de recepción:
+POST / HTTP/1.1{"Estado": [ 0, false, false], "Pulsadores":[false,false,false,false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial"}
+POST / HTTP/1.1{"Estado": [ 0, false, true], "Pulsadores": [false,false,false,false], "Indicadores": [false,false,false,false], "Serial": "Mensaje serial"}
+
+Para escribir en laboratorio de Sist de Control:
+POST / HTTP/1.1{ "Estado": [ 3, true, true], "Llaves": [false], "Analogico": [ 10,15,15,542] }
+
+Para escribir en laboratorio de Telecomunicaciones:
+POST / HTTP/1.1{"Estado": [ 0, true, false], "Analogicos": [180,90,0,0]}
+POST / HTTP/1.1{"Estado": [ 0, true, true], "Analogicos": [45,60,0,0]}
+
+Para escribir en laboratorio de Física Básica:
+POST / HTTP/1.1{ "Estado": [ 0, true, false],"Llaves": [false], "Analogico": [ 1, 0, 125, 542 ]}
+POST / HTTP/1.1{ "Estado": [ 0, false, false],"Llaves": [false], "Analogico": [ 1, 0, 125, 542 ]}
+POST / HTTP/1.1{ "Estado": [ 0, true, true],"Llaves": [true], "Analogico": [ 1, 0, 125, 542 ]}
+POST / HTTP/1.1{ "Estado": [ 0, false, true],"Llaves": [false], "Analogico": [ 1, 0, 125, 542 ]}
