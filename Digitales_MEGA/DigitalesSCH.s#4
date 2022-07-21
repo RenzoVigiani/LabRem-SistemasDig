@@ -7694,52 +7694,40 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 </net>
 <net name="PUL_1_C2" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="37"/>
-<wire x1="1532.89" y1="1374.14" x2="1532.89" y2="1367.536" width="0.1524" layer="91"/>
-<label x="1532.89" y="1367.282" size="1.016" layer="95" rot="R270" xref="yes"/>
+<pinref part="VB_1" gate="G$1" pin="4"/>
+<wire x1="1612.9" y1="1381.76" x2="1590.04" y2="1381.76" width="0.1524" layer="91"/>
+<label x="1590.04" y="1381.76" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
-<segment>
-<pinref part="VB_1" gate="G$1" pin="5"/>
-<wire x1="1612.9" y1="1379.22" x2="1605.28" y2="1379.22" width="0.1524" layer="91"/>
-<label x="1605.28" y="1379.22" size="1.778" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="PUL_2_C2" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="36"/>
 <wire x1="1532.89" y1="1376.68" x2="1534.16" y2="1376.68" width="0.1524" layer="91"/>
 <wire x1="1534.16" y1="1376.68" x2="1534.16" y2="1358.138" width="0.1524" layer="91"/>
 <label x="1534.16" y="1357.884" size="1.016" layer="95" rot="R270" xref="yes"/>
 </segment>
-<segment>
-<pinref part="VB_1" gate="G$1" pin="4"/>
-<wire x1="1612.9" y1="1381.76" x2="1590.04" y2="1381.76" width="0.1524" layer="91"/>
-<label x="1590.04" y="1381.76" size="1.778" layer="95" rot="R180" xref="yes"/>
-</segment>
 </net>
-<net name="PUL_3_C2" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="35"/>
-<wire x1="1535.43" y1="1374.14" x2="1535.43" y2="1367.536" width="0.1524" layer="91"/>
-<label x="1535.43" y="1367.282" size="1.016" layer="95" rot="R270" xref="yes"/>
-</segment>
+<net name="PUL_2_C2" class="0">
 <segment>
 <pinref part="VB_1" gate="G$1" pin="3"/>
 <wire x1="1612.9" y1="1384.3" x2="1605.28" y2="1384.3" width="0.1524" layer="91"/>
 <label x="1605.28" y="1384.3" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="35"/>
+<wire x1="1535.43" y1="1374.14" x2="1535.43" y2="1367.536" width="0.1524" layer="91"/>
+<label x="1535.43" y="1367.282" size="1.016" layer="95" rot="R270" xref="yes"/>
+</segment>
 </net>
-<net name="PUL_4_C2" class="0">
+<net name="PUL_3_C2" class="0">
+<segment>
+<pinref part="VB_1" gate="G$1" pin="2"/>
+<wire x1="1612.9" y1="1386.84" x2="1590.04" y2="1386.84" width="0.1524" layer="91"/>
+<label x="1590.04" y="1386.84" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="34"/>
 <wire x1="1535.43" y1="1376.68" x2="1536.7" y2="1376.68" width="0.1524" layer="91"/>
 <wire x1="1536.7" y1="1376.68" x2="1536.7" y2="1357.63" width="0.1524" layer="91"/>
 <label x="1536.7" y="1357.884" size="1.016" layer="95" rot="R270" xref="yes"/>
-</segment>
-<segment>
-<pinref part="VB_1" gate="G$1" pin="2"/>
-<wire x1="1612.9" y1="1386.84" x2="1590.04" y2="1386.84" width="0.1524" layer="91"/>
-<label x="1590.04" y="1386.84" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -8370,6 +8358,18 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <pinref part="VB_1" gate="G$1" pin="9"/>
 <wire x1="1612.9" y1="1369.06" x2="1605.28" y2="1369.06" width="0.1524" layer="91"/>
 <label x="1605.28" y="1369.06" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="PUL_0_C2" class="0">
+<segment>
+<pinref part="VB_1" gate="G$1" pin="5"/>
+<wire x1="1612.9" y1="1379.22" x2="1605.28" y2="1379.22" width="0.1524" layer="91"/>
+<label x="1605.28" y="1379.22" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="37"/>
+<wire x1="1532.89" y1="1374.14" x2="1532.89" y2="1367.536" width="0.1524" layer="91"/>
+<label x="1532.89" y="1367.282" size="1.016" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
 </nets>

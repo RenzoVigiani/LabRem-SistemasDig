@@ -8041,6 +8041,11 @@ Marquardt</description>
 <wire x1="1455.42" y1="1432.56" x2="1460.5" y2="1432.56" width="0.1524" layer="91"/>
 <label x="1460.5" y="1432.56" size="1.778" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="VCC"/>
+<wire x1="1717.04" y1="1432.56" x2="1722.12" y2="1432.56" width="0.1524" layer="91"/>
+<label x="1722.12" y="1432.56" size="1.778" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="5VDC" class="0">
 <segment>
@@ -8067,11 +8072,6 @@ Marquardt</description>
 <pinref part="VB_1" gate="G$1" pin="1"/>
 <wire x1="1612.9" y1="1389.38" x2="1605.28" y2="1389.38" width="0.1524" layer="91"/>
 <label x="1605.28" y="1389.38" size="1.778" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<pinref part="U$2" gate="G$1" pin="VCC"/>
-<wire x1="1717.04" y1="1432.56" x2="1722.12" y2="1432.56" width="0.1524" layer="91"/>
-<label x="1722.12" y="1432.56" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="A0" class="0">
