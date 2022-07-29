@@ -62,7 +62,7 @@ end process;
 -- control de envío de toda la cadena
 -- clk 115200  para wifi o 9600 para bt -- generic para testbench 160
 	ut_clk_tx: contador generic map (5200*11,1) port map (clk_50MHz,reset,clk_cambio_char,open); -- cnt max = 434 =27*16 -- 115200
--- control fin de palabra	
+	-- control fin de palabra	
 
 with entradas select 
 			leds <=	"00" when "00",

@@ -16,7 +16,7 @@ EthernetServer server = EthernetServer(server_port);
 //----------------------------------------------//
 //------- Defino mensajes de error predeterminado
 // una variable error int
-uint8_t Errores = 0;
+int Errores = 0;
 // 0 - Sin errores
 // 1 - Laboratorio Parado
 // 2 - Laboratorio incorrecto.
@@ -27,28 +27,32 @@ uint8_t Errores = 0;
 // Cyclone II
   #define Pulsador_II_0 6
   #define Pulsador_II_1 7
-  #define Pulsador_II_2 6
-  #define Pulsador_II_3 7
+  #define Pulsador_II_2 8
+  #define Pulsador_II_3 9
   // Leds
   #define Led_II_0 10 // Indicador 0
   #define Led_II_1 11 // Indicador 1
   #define Led_II_2 12 // Indicador 2
   #define Led_II_3 13 // Indicador 3
 // Cyclone IV
-  #define Pulsador_IV_0 6
-  #define Pulsador_IV_1 7
-  #define Pulsador_IV_2 6
-  #define Pulsador_IV_3 7
+  #define Pulsador_IV_0 30
+  #define Pulsador_IV_1 31
+  #define Pulsador_IV_2 32
+  #define Pulsador_IV_3 33
   // Leds
-  #define Led_IV_0 10 // Indicador 0
-  #define Led_IV_1 11 // Indicador 1
-  #define Led_IV_2 12 // Indicador 2
-  #define Led_IV_3 13 // Indicador 3
+  #define Led_IV_0 34 // Indicador 0
+  #define Led_IV_1 35 // Indicador 1
+  #define Led_IV_2 36 // Indicador 2
+  #define Led_IV_3 37 // Indicador 3
+  // Manejo del serial
+  #define velocidad_serial_default 115200
 //////// VAriables Locales de json //////////////
 // Estado
   int num_Lab=0;
   bool subLab=0;// False = CycloneII / True= CycloneIV
   bool iniLab=false;
+// Velocidad
+  uint32_t velocidad_serial=115200;
 // Pulsadores
   bool pulsador_0=false;
   bool pulsador_1=false;
@@ -68,14 +72,16 @@ uint8_t Errores = 0;
   bool bandera_fin_m2=0; // bandera para determinar fin de mov de motor 2
   bool bandera_fin_m3=0; // bandera para determinar fin de mov de motor 3
   bool sentido=0;
+  int conta=0;
+  
 //----------------------------------------------//
 // Realizo las configuraciones iniciales
 void setup() {
   uint8_t myMAC[6] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED}; // defino mac del dispositivo.
   IPAddress myIP(192,168,1,108); // 172.20.5.140 Defino IP Address del dispositivo. 
-  Serial.begin(115200); // Inicializo Puerto serial 0 
-  Serial1.begin(115200); // Inicializo Puerto serial 0 
-  Serial2.begin(115200); // Inicializo Puerto serial 0 
+  Serial.begin(velocidad_serial_default); // Inicializo Puerto serial 0 
+  Serial1.begin(velocidad_serial_default); // Inicializo Puerto serial 1 - CII - GPIO 19 tx 18 rx
+  Serial2.begin(velocidad_serial_default); // Inicializo Puerto serial 2 - CIV - GPIO 16 tx 17 rx
   while (!Serial) continue; 
   Ethernet.begin(myMAC,myIP);  // Inicializo libreria Ethernet
   server.begin(); // Start to listen
@@ -85,23 +91,23 @@ void setup() {
   Serial.println("Port:" + (String)server_port);
 // ------- Defino GPIO MODE (INPUT/OUTPUT)--------  //  
 //Cyclone II
-  pinMode(Led_II_0,OUTPUT);
-  pinMode(Led_II_1,OUTPUT);
-  pinMode(Led_II_2,OUTPUT);
-  pinMode(Led_II_3,OUTPUT);
-  pinMode(Pulsador_II_0,INPUT);
-  pinMode(Pulsador_II_1,INPUT);
-  pinMode(Pulsador_II_2,INPUT);
-  pinMode(Pulsador_II_3,INPUT);
-//Cyclone II
-  pinMode(Led_IV_0,OUTPUT);
-  pinMode(Led_IV_1,OUTPUT);
-  pinMode(Led_IV_2,OUTPUT);
-  pinMode(Led_IV_3,OUTPUT);
-  pinMode(Pulsador_IV_0,INPUT);
-  pinMode(Pulsador_IV_1,INPUT);
-  pinMode(Pulsador_IV_2,INPUT);
-  pinMode(Pulsador_IV_3,INPUT);
+  pinMode(Led_II_0,INPUT);
+  pinMode(Led_II_1,INPUT);
+  pinMode(Led_II_2,INPUT);
+  pinMode(Led_II_3,INPUT);
+  pinMode(Pulsador_II_0,OUTPUT);
+  pinMode(Pulsador_II_1,OUTPUT);
+  pinMode(Pulsador_II_2,OUTPUT);
+  pinMode(Pulsador_II_3,OUTPUT);
+//Cyclone IV
+  pinMode(Led_IV_0,INPUT);
+  pinMode(Led_IV_1,INPUT);
+  pinMode(Led_IV_2,INPUT);
+  pinMode(Led_IV_3,INPUT);
+  pinMode(Pulsador_IV_0,OUTPUT);
+  pinMode(Pulsador_IV_1,OUTPUT);
+  pinMode(Pulsador_IV_2,OUTPUT);
+  pinMode(Pulsador_IV_3,OUTPUT);
   //------ Definir estados iniciales ------//
 }
 
@@ -113,13 +119,12 @@ void loop(){
   if(client){ // Si tengo un cliente conectado
     while (client.available()){ 
       if(bandera_rep==1)bandera_rep=0;//reinicio bandera de repetición cuando tengo un mje nuevo.
-      Serial.println("New Command");
+//      Serial.println("New Command");
       client.readBytesUntil('\r', Mensaje_recibido, sizeof(Mensaje_recibido)); // Tomo el mensaje recibido.
       strncpy(valores_recibidos,&Mensaje_recibido[15],(sizeof(Mensaje_recibido)-15)); 
       Serial.print("Mensaje Recibido: ");
       Serial.println(Mensaje_recibido);   
-//      Serial.print("Json_Recibido: ");
-//      Serial.println(valores_recibidos);   
+      Serial.print("Json_Recibido" + String(valores_recibidos));   
       //------ GET ----- //
       if (strstr(Mensaje_recibido, "GET /HTTP/1.1") != NULL) { // Compruebo si llega un GET, respondo valores actuales
         StaticJsonDocument<256> doc;     
@@ -133,6 +138,8 @@ void loop(){
         Indicadores.add(indicador_1);
         Indicadores.add(indicador_2);
         Indicadores.add(indicador_3);
+
+        doc["velocidad"] = velocidad_serial;
 
         doc["Serial"] = Serial_rx;
 
@@ -176,7 +183,8 @@ void loop(){
         iniLab = Estado[2]; // 1 [Inicia Experimento], 0 [Finaliza Experimento]
 
         if(num_Lab==0){ // Control de numero de lab.
-        
+          velocidad_serial = doc["velocidad"];
+       
           JsonArray Pulsadores = doc["Pulsadores"];
           pulsador_0 = Pulsadores[0];
           pulsador_1 = Pulsadores[1];
@@ -184,6 +192,7 @@ void loop(){
           pulsador_3 = Pulsadores[3];
 
           Serial_rx = doc["Serial"]; // "Mensaje serial"
+          Serial.println((String)Serial_rx);
         }
       }
     }
@@ -200,11 +209,15 @@ void Control(){
   if(num_Lab==0 and bandera_rep==0){ // Control de numero de lab.
     if (subLab and iniLab){
       Serial.println("Sub - Laboratorio: Comunicación UART"); 
+ //     Serial1.begin(velocidad_serial); // asigno la velocidad al serial 1
+ //     Serial.println(velocidad_serial);
       asignarPines(Pulsador_II_0,Pulsador_II_1,Pulsador_II_2,Pulsador_II_3,Led_II_0,Led_II_1,Led_II_2,Led_II_3);
       Comunicacion(false);
     }
     else if (!subLab and iniLab){
       Serial.println("Sub - Laboratorio: Comunicación I2C");  
+  //    Serial2.begin(velocidad_serial); // asigno la velocidad al serial 2
+ //     Serial.println(velocidad_serial);
       asignarPines(Pulsador_IV_0,Pulsador_IV_1,Pulsador_IV_2,Pulsador_IV_3,Led_IV_0,Led_IV_1,Led_IV_2,Led_IV_3);
       Comunicacion(true);
     }
@@ -257,16 +270,11 @@ void asignarPines(int pul_0,int pul_1,int pul_2,int pul_3,int led_0,int led_1,in
  * @param Serial_out Serial de comunicación [False(Cyclone II),True(Cyclone IV)]
  */
 void Comunicacion(bool Serial_out){
-  char recibo[20] = {0};
-  Serial.println("Escribo y leo Serial");
   if(!Serial_out){// Sub lab 1
-    Serial.write(Serial1.read());
-    Serial1.readBytesUntil('\r', recibo, sizeof(recibo));
+    Serial1.write("Hola serial 2");
+    delay(10);
+    Serial.write(Serial2.readBytesUntil('\r', Serial_rx, sizeof(Serial_rx)););    
   }
   else{// Sub lab 2
-    Serial.write(Serial2.read());
-    Serial2.readBytesUntil('\r', recibo, sizeof(recibo));
   }
-  Serial.println(recibo);
-  bandera_rep = 1;
 }

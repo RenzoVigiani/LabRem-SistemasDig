@@ -1,0 +1,14 @@
+
+State Machine - |transmitter|transmitter_uart:i_trans_uart|estado
+Name estado.stop estado.d7 estado.d6 estado.d5 estado.d4 estado.d3 estado.d2 estado.d1 estado.d0 estado.start estado.idle 
+estado.idle 0 0 0 0 0 0 0 0 0 0 0 
+estado.start 0 0 0 0 0 0 0 0 0 1 1 
+estado.d0 0 0 0 0 0 0 0 0 1 0 1 
+estado.d1 0 0 0 0 0 0 0 1 0 0 1 
+estado.d2 0 0 0 0 0 0 1 0 0 0 1 
+estado.d3 0 0 0 0 0 1 0 0 0 0 1 
+estado.d4 0 0 0 0 1 0 0 0 0 0 1 
+estado.d5 0 0 0 1 0 0 0 0 0 0 1 
+estado.d6 0 0 1 0 0 0 0 0 0 0 1 
+estado.d7 0 1 0 0 0 0 0 0 0 0 1 
+estado.stop 1 0 0 0 0 0 0 0 0 0 1 

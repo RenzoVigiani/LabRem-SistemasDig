@@ -10,7 +10,7 @@ POST /HTTP/1.1 + <JSON a enviar>
 ##### Json a enviar (ejemplo)
 
 ```Ruby 
-{"Estado": [ 0, true, false],"Placa":0, "Pulsadores": [false,false,false,false], "Serial": "Mensaje serial"}
+{"Estado": [ 0, true, false],"velocidad": 115200, "Pulsadores": [false,false,false,false], "Serial": "Mensaje serial"}
 ```
 Y para obtener avances de los datos o reporte de los datos debe enviar un:
 
@@ -38,9 +38,21 @@ Es un array conformado por 3 elementos en el siguiente orden: [Laboratorio, SubL
 |0|false|true |Comunicación I2C  |Inicia  |
 |0|false|false|Comunicación I2C  |Finaliza|
 
-**Elementos por Laboratorio**
-Ambos Laboratorios
+**Velocidad**
+Es un dato tipo entero que indica la velocidad de comunicación deseada.
+ej: 9600, 115200, etc.
 
+**Elementos por Laboratorio**
+Laboratorio de UART
+
+- Utiliza Cyclone II
+- Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]
+- Indicadores:  [indicador1, indicador2, indicador3, indicador4]
+  - Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
+
+Laboratorio de I2C
+
+- Utiliza Cyclone IV
 - Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]
 - Indicadores:  [indicador1, indicador2, indicador3, indicador4]
   - Los mismos son utilizados para representar en la API lo que se ve por la WebCam.

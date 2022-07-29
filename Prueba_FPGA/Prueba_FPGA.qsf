@@ -62,10 +62,10 @@ set_location_assignment PIN_85 -to entradas[0]
 set_location_assignment PIN_7 -to leds[1]
 set_location_assignment PIN_3 -to leds[0]
 set_location_assignment PIN_23 -to reset
-set_location_assignment PIN_100 -to rx
+set_location_assignment PIN_99 -to rx
 set_location_assignment PIN_87 -to salidas[1]
-set_location_assignment PIN_99 -to salidas[0]
-set_location_assignment PIN_98 -to tx
+set_location_assignment PIN_98 -to salidas[0]
+set_location_assignment PIN_100 -to tx
 set_global_assignment -name VHDL_FILE string_tx_uart.vhd
 set_global_assignment -name VHDL_FILE Contador_con_q/contador.vhd
 set_global_assignment -name VHDL_FILE UART/UART.vhd

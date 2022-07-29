@@ -1,0 +1,113 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -5.157
+TNS   : -107.251
+
+Type  : Slow 1200mV 85C Model Setup 'contador_div_frec:i_dato|clk_out'
+Slack : -2.143
+TNS   : -11.488
+
+Type  : Slow 1200mV 85C Model Setup 'contador_div_frec:i_9600|clk_out'
+Slack : -0.199
+TNS   : -0.464
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : -0.019
+TNS   : -0.019
+
+Type  : Slow 1200mV 85C Model Hold 'contador_div_frec:i_dato|clk_out'
+Slack : 0.413
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'contador_div_frec:i_9600|clk_out'
+Slack : 0.485
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'contador_div_frec:i_dato|clk_out'
+Slack : -3.201
+TNS   : -13.610
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -49.097
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'contador_div_frec:i_9600|clk_out'
+Slack : -1.487
+TNS   : -16.357
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -4.672
+TNS   : -95.549
+
+Type  : Slow 1200mV 0C Model Setup 'contador_div_frec:i_dato|clk_out'
+Slack : -1.884
+TNS   : -9.880
+
+Type  : Slow 1200mV 0C Model Setup 'contador_div_frec:i_9600|clk_out'
+Slack : -0.098
+TNS   : -0.156
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.083
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'contador_div_frec:i_dato|clk_out'
+Slack : 0.383
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'contador_div_frec:i_9600|clk_out'
+Slack : 0.449
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'contador_div_frec:i_dato|clk_out'
+Slack : -3.201
+TNS   : -13.610
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -49.097
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'contador_div_frec:i_9600|clk_out'
+Slack : -1.487
+TNS   : -16.357
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.616
+TNS   : -28.321
+
+Type  : Fast 1200mV 0C Model Setup 'contador_div_frec:i_dato|clk_out'
+Slack : -0.342
+TNS   : -0.872
+
+Type  : Fast 1200mV 0C Model Setup 'contador_div_frec:i_9600|clk_out'
+Slack : 0.499
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : -0.080
+TNS   : -0.089
+
+Type  : Fast 1200mV 0C Model Hold 'contador_div_frec:i_dato|clk_out'
+Slack : 0.154
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'contador_div_frec:i_9600|clk_out'
+Slack : 0.195
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -43.202
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'contador_div_frec:i_9600|clk_out'
+Slack : -1.000
+TNS   : -11.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'contador_div_frec:i_dato|clk_out'
+Slack : -1.000
+TNS   : -8.000
+
+------------------------------------------------------------
