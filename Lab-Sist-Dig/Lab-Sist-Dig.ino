@@ -44,8 +44,11 @@ int Errores = 0;
   #define Led_IV_1 35 // Indicador 1
   #define Led_IV_2 36 // Indicador 2
   #define Led_IV_3 37 // Indicador 3
+<<<<<<< HEAD
   // Manejo del serial
   #define velocidad_serial_default 115200
+=======
+>>>>>>> 11693e69f498c64a01dbd2d4aa8a1f1fc573a5b6
 //////// VAriables Locales de json //////////////
 // Estado
   int num_Lab=0;
