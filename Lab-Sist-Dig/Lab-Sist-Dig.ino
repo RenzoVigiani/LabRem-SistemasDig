@@ -127,7 +127,7 @@ void loop(){
     while (client.available()){ 
       client.readBytesUntil('\r', Mensaje_recibido, sizeof(Mensaje_recibido)); // Tomo el mensaje recibido.
       strncpy(valores_recibidos,&Mensaje_recibido[15],(sizeof(Mensaje_recibido)-15)); 
-      Serial.print("Mensaje Recibido");
+      Serial.print("Mensaje Recibido: " + (String)Mensaje_recibido);
       //----------- GET ----------- //
       if (strstr(Mensaje_recibido, "GET /HTTP/1.1") != NULL) { // Compruebo si llega un GET, respondo valores actuales
         StaticJsonDocument<256> doc;     
