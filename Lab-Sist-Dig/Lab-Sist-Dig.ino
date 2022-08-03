@@ -209,7 +209,7 @@ void Control(){
       Serial.println("Sub-Lab: UART"); 
       Serial1.begin(velocidad_serial); // asigno la velocidad al serial 1
       asignarPines(Pulsador_II_0,Pulsador_II_1,Pulsador_II_2,Pulsador_II_3,Led_II_0,Led_II_1,Led_II_2,Led_II_3);
-      Serial1.println(Mensaje_rx);      
+      Serial1.print(Mensaje_rx);      
       bandera_rep=1;
     }
     else if (!subLab and iniLab){
@@ -234,14 +234,20 @@ void Control(){
       Errores=2;
     }
   }
+  if(Serial1.available()){
+    inputString=Serial1.readString();
+    Serial.println("Se recibio de serial 1: " + inputString);      
+  }
+  else if(Serial2.available()){
+    inputString=Serial2.readString();
+    Serial.println("Se recibio de serial 2: " + inputString);      
+  }
+
   if(conta<10){
     conta++;
-    while(Serial2.available()){
-      inputString=Serial2.readString();
-      Serial.println("Se recibio: " + inputString);      
-    }
   }
   else{bandera_rep=1; conta=0;}
+
 }
 /**
  * @brief Selecciona las salidas y entradas en base a la placa elegida
