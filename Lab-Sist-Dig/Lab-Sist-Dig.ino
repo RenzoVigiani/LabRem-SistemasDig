@@ -23,6 +23,7 @@ int Errores = 0;
 // 3 - Error de comunicación UART
 //----------------------------------------------//
 //------- Defino variables globales
+  #define Numero_laboratorio 0
 // Nombres para los pines GPIO
 // Cyclone II
   #define Pulsador_II_0 6
@@ -46,9 +47,10 @@ int Errores = 0;
   #define Led_IV_3 37 // Indicador 3
   // Manejo del serial
   #define velocidad_serial_default 9600
+
 //////// VAriables Locales de json //////////////
 // Estado
-  int num_Lab=0;
+  int num_Lab=Numero_laboratorio;
   bool subLab=0;// False = CycloneII / True= CycloneIV
   bool iniLab=false;
 // Velocidad
@@ -59,9 +61,9 @@ int Errores = 0;
   bool pulsador_2=false;
   bool pulsador_3=false;
 // UART
-  String Mensaje_rx="Holis rx";
-  char* Mensaje_rx_char={0};
-  String inputString="";
+  char* input_ether_char={0};
+  String input_ether_string="Holis rx"; // variable que se usa para guardar el mje recibido de ethernet. 
+  String input_fpga_string=""; //  variable que se usa para guardar el mje recibido de fpga.
 //--- Variables auxiliares ---//
 // Indicadores
   bool indicador_0=false;
@@ -70,13 +72,10 @@ int Errores = 0;
   bool indicador_3=false;
 // banderas
   bool bandera_rep=0; // bandera para limitar la cantidad de repeticiones de mensaje de lab incorrecto 
-  bool bandera_fin_m1=0; // bandera para determinar fin de mov de motor 1
-  bool bandera_fin_m2=0; // bandera para determinar fin de mov de motor 2
-  bool bandera_fin_m3=0; // bandera para determinar fin de mov de motor 3
-  bool stringComplete = false;  // whether the string is complete
   bool sentido=0;
-  int conta=0;
+  int repeticiones=0; // contador para repeticiones.
 
+//--- FUNCIONES --- //
   void asignarPines(int pul_0,int pul_1,int pul_2,int pul_3,int led_0,int led_1,int led_2,int led_3);
   void Comunicacion(bool Serial_out);
   void Control();
@@ -97,7 +96,7 @@ void setup() {
   Serial.println(Ethernet.localIP());
   Serial.println("Port:" + (String)server_port);
 // ------- Defino GPIO MODE (INPUT/OUTPUT)--------  //  
-  inputString.reserve(200);
+  input_fpga_string.reserve(200);
 //Cyclone II
   pinMode(Led_II_0,INPUT);
   pinMode(Led_II_1,INPUT);
@@ -126,13 +125,10 @@ void loop(){
   EthernetClient client = server.available(); 
   if(client){ // Si tengo un cliente conectado
     while (client.available()){ 
-//      Serial.println("New Command");
       client.readBytesUntil('\r', Mensaje_recibido, sizeof(Mensaje_recibido)); // Tomo el mensaje recibido.
       strncpy(valores_recibidos,&Mensaje_recibido[15],(sizeof(Mensaje_recibido)-15)); 
       Serial.print("Mensaje Recibido");
-//      Serial.println(Mensaje_recibido);   
-//      Serial.print("Json_Recibido" + String(valores_recibidos));   
-      //------ GET ----- //
+      //----------- GET ----------- //
       if (strstr(Mensaje_recibido, "GET /HTTP/1.1") != NULL) { // Compruebo si llega un GET, respondo valores actuales
         StaticJsonDocument<256> doc;     
         JsonArray Estado = doc.createNestedArray("Estado");
@@ -145,7 +141,7 @@ void loop(){
           Indicadores.add(indicador_2);
           Indicadores.add(indicador_3);
         doc["velocidad"] = velocidad_serial;
-        doc["Serial"] = inputString;
+        doc["Serial"] = input_fpga_string;
         doc["Error"] = Errores;
 
         Serial.print(F("Sending: "));
@@ -160,10 +156,8 @@ void loop(){
         client.println();
   // Write JSON document
         serializeJsonPretty(doc, client);
-  // Disconnect
-        client.println(F("Get terminado"));
       }
-            //------- POST -----//      
+      //------------ POST ----------//      
       if (strstr(Mensaje_recibido, "POST /HTTP/1.1") !=NULL) { // Compruebo si llega un POST y respondo, habilito banderas.
         Errores=0;
         if(bandera_rep==1)bandera_rep=0;//reinicio bandera de repetición cuando tengo un mje nuevo.
@@ -182,15 +176,15 @@ void loop(){
           num_Lab = Estado[0]; // 0 [Sist Dig], 1 [Sist Control], 2[Telecomunicaciones], 3[Fisica]
           subLab = Estado[1]; // 0 [Sub Lab 1 con Cyclone II], 1 [SubLab 2 con Cyclone IV]
           iniLab = Estado[2]; // 1 [Inicia Experimento], 0 [Finaliza Experimento]
-        if(num_Lab==0){ // Control de numero de lab.
+        if(num_Lab==Numero_laboratorio){ // Si es el numero de laboratorio asigno variables recibidas.
           velocidad_serial = doc["velocidad"];       
           JsonArray Pulsadores = doc["Pulsadores"];
             pulsador_0 = Pulsadores[0];
             pulsador_1 = Pulsadores[1];
             pulsador_2 = Pulsadores[2];
             pulsador_3 = Pulsadores[3];
-          Mensaje_rx_char = doc["Serial"];
-          Mensaje_rx = (String)Mensaje_rx_char;
+          input_ether_char = doc["Serial"];
+          input_ether_string = (String)input_ether_char;
         }
       }
     }
@@ -199,27 +193,28 @@ void loop(){
     Control();
   }
 }
+
 /**
- * @brief Funcion utilizada para el control de laboratorios. "Se analiza las variables de entrada y se ejecuta lo necesario"
+ * @brief Funcion utilizada para el control de laboratorios. "Se analiza las variables de entrada y se elije la placa a utilizar"
  * 
  */
 void Control(){
-  if(num_Lab==0 and bandera_rep==0){ // Control de numero de lab.
-    if (subLab and iniLab){
+  if(num_Lab==Numero_laboratorio and bandera_rep==0){ // Si es el lab correcto - Control de numero de sublab.
+    if (subLab and iniLab){ // UART
       Serial.println("Sub-Lab: UART"); 
       Serial1.begin(velocidad_serial); // asigno la velocidad al serial 1
       asignarPines(Pulsador_II_0,Pulsador_II_1,Pulsador_II_2,Pulsador_II_3,Led_II_0,Led_II_1,Led_II_2,Led_II_3);
-      Serial1.print(Mensaje_rx);      
+      Serial1.print(input_ether_string);      
       bandera_rep=1;
     }
-    else if (!subLab and iniLab){
+    else if (!subLab and iniLab){ // I2C
       Serial.println("Sub-Lab: I2C");  
       Serial2.begin(velocidad_serial); // asigno la velocidad al serial 2
       asignarPines(Pulsador_IV_0,Pulsador_IV_1,Pulsador_IV_2,Pulsador_IV_3,Led_IV_0,Led_IV_1,Led_IV_2,Led_IV_3);
-      Serial2.print(Mensaje_rx);      
+      Serial2.print(input_ether_string);      
       bandera_rep=1;
     }
-    else{
+    else{ // Laboratorio parado.
       if(bandera_rep==0){
         Serial.println("Laboratorio Parado");
         bandera_rep=1;
@@ -227,39 +222,41 @@ void Control(){
       }
     }
   }
-  else{
+  else{ // Laboratorio incorrecto
     if(bandera_rep==0){
       Serial.println("Laboratorio incorrecto");  
       bandera_rep = 1; 
       Errores=2;
     }
   }
-  if(Serial1.available()){
-    inputString=Serial1.readString();
-    Serial.println("Se recibio de serial 1: " + inputString);      
+  if(Serial1.available()){ //Controlo lo que se envía por el serial 1.
+    input_fpga_string=Serial1.readString();
+    Serial.println("Se recibio de serial 1: " + input_fpga_string);      
   }
-  else if(Serial2.available()){
-    inputString=Serial2.readString();
-    Serial.println("Se recibio de serial 2: " + inputString);      
+  else if(Serial2.available()){ //Controlo lo que se envía por el serial 1.
+    input_fpga_string=Serial2.readString();
+    Serial.println("Se recibio de serial 2: " + input_fpga_string);      
   }
-
-  if(conta<10){
-    conta++;
+  if(repeticiones<10){// Se busca que no se repita mas de 10 veces una acción.
+    repeticiones++;
   }
-  else{bandera_rep=1; conta=0;}
-
+  else{
+    bandera_rep=1;
+    repeticiones=0;
+  }
 }
+
 /**
  * @brief Selecciona las salidas y entradas en base a la placa elegida
  * 
- * @param pul_0 
- * @param pul_1 
- * @param pul_2 
- * @param pul_3 
- * @param led_0 
- * @param led_1 
- * @param led_2 
- * @param led_3 
+ * @param pul_0 - Pulsador 0
+ * @param pul_1 - Pulsador 1
+ * @param pul_2 - Pulsador 2
+ * @param pul_3 - Pulsador 3
+ * @param led_0 - Indicador 0
+ * @param led_1 - Indicador 1
+ * @param led_2 - Indicador 2
+ * @param led_3 - Indicador 3
  */
 void asignarPines(int pul_0,int pul_1,int pul_2,int pul_3,int led_0,int led_1,int led_2,int led_3){
 //    Serial.println("Escribo pulsadores");

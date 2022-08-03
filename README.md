@@ -1,7 +1,7 @@
 # Protocolo para los laboratorios de "Sistemas Digitales"
 
 El procedimiento de comunicación es el siguiente.
-Cada vez que se quiere modificar algun dato en el laboratorio. El Servidor debe enviar un
+Cada vez que se quiere modificar algun dato en el laboratorio. El Servidor debe enviar un...
 
 ```Ruby 
 POST /HTTP/1.1 + <JSON a enviar>
@@ -9,12 +9,13 @@ POST /HTTP/1.1 + <JSON a enviar>
 
 ##### Json a enviar (ejemplo)
 
-```Ruby 
-{"Estado": [ 0, true, false],"velocidad": 115200, "Pulsadores": [false,false,false,false], "Serial": "Mensaje serial"}
+```Ruby
+{"Estado": [ 0, 1, 0],"velocidad": 9600, "Pulsadores": [0,1,1,0], "Serial": "Mensaje serial"}
 ```
+
 Y para obtener avances de los datos o reporte de los datos debe enviar un:
 
-```Ruby 
+```Ruby
 GET /HTTP/1.1
 ```
 
@@ -22,8 +23,8 @@ De esta forma el Arduino responde ante una petición.
 
 ##### Json a recibir (ejemplo)
 
-```Ruby 
-{"Estado": [ 0, true, false], "Placa":0,"Indicadores": [false,false,false,false], "Serial": "Mensaje serial","Error":0}
+```Ruby
+{"Estado": [ 0, true, false], "Velocidad":9600,"Indicadores": [false,false,false,false], "Serial": "Mensaje serial","Error":0}
 ```
 
 ## Sintaxis
@@ -38,9 +39,11 @@ Es un array conformado por 3 elementos en el siguiente orden: [Laboratorio, SubL
 |0|false|true |Comunicación I2C  |Inicia  |
 |0|false|false|Comunicación I2C  |Finaliza|
 
+>**Nota:** Los valores booleanos se los puede recibir en cualquier forma, es decir, <span style="color: green">_true=1=HIGH_ </span> y <span style="color: red">_false=0=LOW_</span>
+
 **Velocidad**
 Es un dato tipo entero que indica la velocidad de comunicación deseada.
-ej: 9600, 115200, etc.
+*_ej: 9600, 115200, etc._
 
 **Elementos por Laboratorio**
 Laboratorio de UART
@@ -80,20 +83,12 @@ Es una variable numerica que representa un mensaje de error.
 
 **Arduino Mega 2560**
 Pin Out
-
  <img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pinout.png" width=1920>
-
-**Arduino Mega Pro**
-
-Pin Out
-<img alt = "Arduino Mega Pro" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pro.png">
 
 **FPGA Cyclone II**
 Nombre: Altera_FPGA_Board_EP2C8Q208C8 Cyclone II
-
 <img  alt="Cyclone II" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone_ii.png" width="1920">
 
 **FPGA Cyclone IV**
 Nombre: Altera_FPGA_Board_EP4CE6E22C8 Cyclone IV
-
 <img  alt="Cyclone IV" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone-iv.png" width="1920"> 
