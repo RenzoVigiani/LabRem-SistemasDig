@@ -1,4 +1,8 @@
-# Protocolo para los laboratorios de "Sistemas Digitales"
+# Laboratorios de Sistemas digitales
+En este readme se detallan las partes mas importantes del proyecto de remotización del laboratorio de **Sistemas digitales**, haciendo énfacis en el hardware.
+
+## Protocolo para los laboratorios de "Sistemas Digitales"
+Para poder establecer una comunicación entre al api web, generada por el equipo de software del proyecto, y los dispositivos en el laboratorio establecemos un protocolo en común. 
 
 El procedimiento de comunicación es el siguiente.
 Cada vez que se quiere modificar algun dato en el laboratorio. El Servidor debe enviar un...
@@ -63,7 +67,7 @@ Laboratorio de I2C
   - Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]
   - Indicadores:  [indicador1, indicador2, indicador3, indicador4]
 
-Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
+>Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
 
 **Serial:** Es un dato del tipo "string" con un tamaño maximo de 100 caracteres.
 
@@ -87,6 +91,10 @@ Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
 **Arduino Mega 2560: Pin Out**
  <img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pinout.png" width=1920>
 
+ **Adaptadores de nivel**
+   <img alt = "Pin Out Adaptador de Nivel" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/digitales_3D/level-pin-out.png" width=1920>
+
+
 ## *Diseños 3D*
 Para cada una de las placas se realizaron bases y soportes para las placas para poder identificar a cada una y que se pueda diferencias con facilidad desde el usuario.
 
@@ -103,6 +111,3 @@ Para cada una de las placas se realizaron bases y soportes para las placas para 
 - [Altera Cyclone IV](https://docs.rs-online.com/6ee7/0900766b80f69ead.pdf)
 - [Adaptadores de Nivel 1](https://www.ti.com/lit/ds/symlink/txs0108e.pdf?ts=1659067269078&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FTXS0108E)
 - [Adaptadores de Nivel 2](https://components101.com/modules/txs0108e-bi-directional-logic-level-converter-module)
-
-  <img alt = "Pin Out Adaptador de Nivel" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/digitales_3D/level-pin-out.png" width=1920>
-
