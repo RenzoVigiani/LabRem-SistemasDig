@@ -48,23 +48,26 @@ Es un dato tipo entero que indica la velocidad de comunicación deseada.
 **Elementos por Laboratorio**
 Laboratorio de UART
 
-- Utiliza Cyclone II
-- Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]
-- Indicadores:  [indicador1, indicador2, indicador3, indicador4]
-  - Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
+  - Utiliza **FPGA Cyclone II**    
+    Nombre: Altera_FPGA_Board_EP2C8Q208C8 Cyclone II
+    <img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone-ii.png" width="1920">
+  - Pulsadores: [Pulsador1, Pulsador2, Pulsador3, Pulsador4]
+  - Indicadores: [indicador1, indicador2, indicador3, indicador4]
 
 Laboratorio de I2C
 
-- Utiliza Cyclone IV
-- Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]
-- Indicadores:  [indicador1, indicador2, indicador3, indicador4]
-  - Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
+  - Utiliza **FPGA Cyclone IV**
+    Nombre: Altera_FPGA_Board_EP4CE6E22C8 Cyclone IV
+    <img alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone-iv.png" width="1920">
+    
+  - Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]
+  - Indicadores:  [indicador1, indicador2, indicador3, indicador4]
 
-**Serial**
-Es un dato del tipo "string" con un tamaño maximo de 100 caracteres.
+Los mismos son utilizados para representar en la API lo que se ve por la WebCam.
 
-**Error**
-Es una variable numerica que representa un mensaje de error.
+**Serial:** Es un dato del tipo "string" con un tamaño maximo de 100 caracteres.
+
+**Error:** Es una variable numerica que representa un mensaje de error.
 
 | Tipo de error                         |  Valor  |
 | ----------------------------------    |---------|
@@ -81,14 +84,25 @@ Es una variable numerica que representa un mensaje de error.
 **Esquematico**
 <img alt="Esquematico" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico.png" width="1920">
 
-**Arduino Mega 2560**
-Pin Out
+**Arduino Mega 2560: Pin Out**
  <img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pinout.png" width=1920>
 
-**FPGA Cyclone II**
-Nombre: Altera_FPGA_Board_EP2C8Q208C8 Cyclone II
-<img  alt="Cyclone II" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone_ii.png" width="1920">
+## *Diseños 3D*
+Para cada una de las placas se realizaron bases y soportes para las placas para poder identificar a cada una y que se pueda diferencias con facilidad desde el usuario.
 
-**FPGA Cyclone IV**
-Nombre: Altera_FPGA_Board_EP4CE6E22C8 Cyclone IV
-<img  alt="Cyclone IV" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone-iv.png" width="1920"> 
+||||
+|-|-|-|
+||<img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/digitales_3D/skp_Cyclone-2.png" width=1920>||
+||<img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/digitales_3D/Cyclone-2_3.jpg" width=1920>||
+||<img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/digitales_3D/skp_Cyclone-4.png" width=1920>||
+||<img alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/digitales_3D/Cyclone-4.jpg" width=1920>||
+
+**Datasheets**
+- [Recopilación de Datasheets](https://renzovigiani.notion.site/adea4f735c994faaa2f919a7e5105e9d?v=83070c8c05d34c02905fc370e37b802a)
+- [Altera Cyclone II](https://pdf.utmel.com/r/datasheets/altera-ep2c8q208c8n-datasheets-8218.pdf)
+- [Altera Cyclone IV](https://docs.rs-online.com/6ee7/0900766b80f69ead.pdf)
+- [Adaptadores de Nivel 1](https://www.ti.com/lit/ds/symlink/txs0108e.pdf?ts=1659067269078&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FTXS0108E)
+- [Adaptadores de Nivel 2](https://components101.com/modules/txs0108e-bi-directional-logic-level-converter-module)
+
+  <img alt = "Pin Out Adaptador de Nivel" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/digitales_3D/level-pin-out.png" width=1920>
+
